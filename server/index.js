@@ -13,7 +13,15 @@ app.post('/repos', urlencodedParser, function (req, res) {
     if (err) {
       throw err;
     } else {
-      db.save(repoData);
+      db.save(repoData, (err, result) => {
+        if (err) {
+          res.status(500);
+          res.send(err);
+        } else {
+          res.status(201);
+          res.send(result);
+        }
+      });
     }
   });
 

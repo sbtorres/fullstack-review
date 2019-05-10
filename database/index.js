@@ -24,12 +24,13 @@ let repoSchema = mongoose.Schema({
 
 let Repo = mongoose.model('Repo', repoSchema);
 
-let save = (repoData) => {
+let save = (repoData, callback) => {
   Repo.insertMany(repoData, (err, docs) => {
     if (err) {
       throw err;
     } else {
       console.log("Docs successfully inserted: ", docs);
+      callback(null, docs);
     }
   })
 }
