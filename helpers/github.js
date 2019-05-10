@@ -1,5 +1,6 @@
 const request = require('request');
 const config = require('../config.js');
+const fakeData = require('./../data.json');
 
 let getReposByUsername = (username, callback) => {
   // TODO - Use the request module to request repos for a specific
@@ -15,13 +16,17 @@ let getReposByUsername = (username, callback) => {
     }
   };
 
-  console.log(options.url);
-
   request.get(options, (error, response, body) => {
     if (error) {
       callback(error);
     } else {
-      callback(null, body);
+      let parsedBody = JSON.parse(body);
+      var shortenedRepos = [];
+      for (let i = 0; i < parsedBody.length; i++) {
+        let repo = parsedBody[i];
+        shortenedRepos.push({id: repo.id, username: repo.owner.login, forks: repo.forks, url: repo.owner.html_url, name: repo.name, updated_at: repo.updated_at, stars: repo.stargazers_count, description: repo.description, language: repo.language});
+      }
+      callback(null, shortenedRepos);
     }
   })
 
