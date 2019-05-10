@@ -12,7 +12,11 @@ let repoSchema = mongoose.Schema({
     id: Number,
     username: String,
     repo_name: String,
+    description: String,
+    stars: Number,
     forks: Number,
+    updated_at: Date,
+    language: String,
     repo_url: String,
 });
 
