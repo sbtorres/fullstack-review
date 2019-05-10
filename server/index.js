@@ -2,6 +2,7 @@ const express = require('express');
 let app = express();
 const bodyParser = require('body-parser');
 const github = require('./../helpers/github.js');
+const db = require('./../database/index.js');
 
 app.use(express.static(__dirname + '/../client/dist'));
 app.use(bodyParser.json());
@@ -12,9 +13,7 @@ app.post('/repos', urlencodedParser, function (req, res) {
     if (err) {
       throw err;
     } else {
-      console.log(repoData);
-      res.status(201);
-      res.send(repoData);
+      db.save(repoData);
     }
   });
 
