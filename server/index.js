@@ -8,9 +8,15 @@ app.use(bodyParser.json());
 var urlencodedParser = bodyParser.urlencoded({ extended: false })
 
 app.post('/repos', urlencodedParser, function (req, res) {
-  github.getReposByUsername(req.body.username);
-  res.status(201);
-  res.send(req.body);
+  github.getReposByUsername(req.body.username, (err, repoData) => {
+    if (err) {
+      throw err;
+    } else {
+      console.log(repoData);
+      res.status(201);
+      res.send(repoData);
+    }
+  });
 
   
   // This route should take the github username provided
