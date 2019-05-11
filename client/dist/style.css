@@ -1,4 +1,42 @@
+h3 {
+  display: flex;
+  margin: 10px 0px 0px 30px;
+}
+
 .repo {
-  border: 1px solid black;
-  margin: 5px;
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid gray;
+  border-bottom: 1px solid gray;
+  margin: 10px;
+}
+
+.name {
+  display: flex;
+  flex-direction: column;
+  color: blue;
+  font-size: 30px;
+  margin: 5px 0px 0px 5px;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  color: gray;
+  margin: 5px 0px 0px 5px;
+}
+
+.sub-content {
+  display: flex;
+  flex-direction: row;
+  margin: 20px 0px 0px 0px;  
+}
+
+.creator, 
+.stars, 
+.forks,
+.updated_at,
+.language {
+  display: flex;
+  margin: 0px 10px 10px 5px;
 }
