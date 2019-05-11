@@ -13,8 +13,7 @@ class App extends React.Component {
 
   }
 
-  componentDidMount() {
-    console.log('in component did mount');  
+  componentDidMount() { 
     $.ajax({
       type: "GET",
       url: "/repos",
