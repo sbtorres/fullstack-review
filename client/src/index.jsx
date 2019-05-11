@@ -26,7 +26,6 @@ class App extends React.Component {
       },
       dataType: "json",
     })
-
   }
 
   search (term) {
@@ -36,6 +35,7 @@ class App extends React.Component {
       data: {username: term},
       success: (data) => {
         console.log("success, the returned data was: " , data);
+        this.componentDidMount();
       },
       error: (err) => {
         console.log("error posting to server: ",  err);
