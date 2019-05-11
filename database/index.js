@@ -1,7 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher', {
-  useMongoClient: true,
-});
+mongoose.connect('mongodb+srv://sbtorres:scott@githubfetcher-o2u5g.mongodb.net/test?retryWrites=true');
 
 var db = mongoose.connection;
 
