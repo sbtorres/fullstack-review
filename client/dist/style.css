@@ -4,18 +4,25 @@ h3 {
 }
 
 .avatar {
-  display: flex;
-  flex-direction: row;
-  height: 80px;
-  width: 80px;
+  height: 40px;
+  width: 40px;
 }
 
-.repo {
+.repo-container {
   display: flex;
   flex-direction: column;
   border-top: 1px solid gray;
-  border-bottom: 1px solid gray;
   margin: 10px;
+}
+
+.repo-header {
+  display: flex;
+  flex-direction: row;
+}
+
+.mid-content {
+  display: flex;
+  flex-direction: column;
 }
 
 .name {
@@ -37,6 +44,7 @@ h3 {
   display: flex;
   flex-direction: row;
   margin: 20px 0px 0px 0px;  
+  border-bottom: 1px solid gray;
 }
 
 .creator, 
