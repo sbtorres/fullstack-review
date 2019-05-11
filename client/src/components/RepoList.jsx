@@ -1,4 +1,5 @@
 import React from 'react';
+import $ from 'jquery';
 
 const RepoList = (props) => (
   <div>
@@ -6,8 +7,10 @@ const RepoList = (props) => (
     {props.repos.map((repo, index) => {
       return(
         <div key={repo.id} className="repo">
-          <div className="name">Repository: {repo.repo_name}</div>
+          <img src={repo.avatarLink} className="avatar"></img>
+          <a href={repo.repoLink} className="name">Repository: {repo.repo_name}</a>
           <div className="description">Description: {repo.description}</div>
+          <div className="url">url {repo.url}</div>
           <div className="sub-content">
             <div className="creator">Creator: {repo.username}</div>
             <div className="stars">Stars: {repo.stars}</div>

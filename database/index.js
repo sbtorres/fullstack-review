@@ -19,7 +19,8 @@ let repoSchema = mongoose.Schema({
     forks: Number,
     updated_at: Date,
     language: String,
-    repo_url: String,
+    repoLink: String,
+    avatarLink: String,
 });
 
 let Repo = mongoose.model('Repo', repoSchema);

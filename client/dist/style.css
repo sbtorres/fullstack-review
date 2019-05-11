@@ -3,6 +3,13 @@ h3 {
   margin: 10px 0px 0px 30px;
 }
 
+.avatar {
+  display: flex;
+  flex-direction: row;
+  height: 80px;
+  width: 80px;
+}
+
 .repo {
   display: flex;
   flex-direction: column;
