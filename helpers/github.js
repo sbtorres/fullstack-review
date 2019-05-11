@@ -1,6 +1,5 @@
 const request = require('request');
 const config = require('../config.js');
-const fakeData = require('./../data.json');
 
 let getReposByUsername = (username, callback) => {
   // TODO - Use the request module to request repos for a specific
