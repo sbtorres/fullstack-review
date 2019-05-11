@@ -11,7 +11,7 @@ db.once('open', () => {
 })
 
 let repoSchema = mongoose.Schema({
-    id: Number,
+    id: {type: Number, unique: true},
     username: String,
     repo_name: String,
     description: String,
@@ -27,7 +27,7 @@ let Repo = mongoose.model('Repo', repoSchema);
 let save = (repoData, callback) => {
   Repo.insertMany(repoData, (err, docs) => {
     if (err) {
-      throw err;
+      callback(err);
     } else {
       console.log("Docs successfully inserted: ", docs);
       callback(null, docs);
@@ -35,4 +35,13 @@ let save = (repoData, callback) => {
   })
 }
 
-module.exports.save = save;
+let findTop25Repos = (callback) => {
+  Repo.aggregate({$sort: {stars: -1}}, {$limit: 25}, function (err, repo) {
+    if (err) return console.error(err);
+    callback(null, JSON.stringify(repo));
+  })
+}
+
+module.exports = {
+  save, findTop25Repos
+}

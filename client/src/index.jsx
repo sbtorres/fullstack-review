@@ -13,8 +13,23 @@ class App extends React.Component {
 
   }
 
+  componentDidMount() {
+    console.log('in component did mount');  
+    $.ajax({
+      type: "GET",
+      url: "/repos",
+      success: (data) => {
+        this.setState({repos: JSON.parse(data)})
+      },
+      error: (err) => {
+        console.log('Could not retrieve repos from server: ', err);
+      },
+      dataType: "json",
+    })
+
+  }
+
   search (term) {
-    console.log(`${term} was searched`);
     $.ajax({
       type: "POST",
       url: "/repos",

@@ -11,7 +11,7 @@ var urlencodedParser = bodyParser.urlencoded({ extended: false })
 app.post('/repos', urlencodedParser, function (req, res) {
   github.getReposByUsername(req.body.username, (err, repoData) => {
     if (err) {
-      throw err;
+      console.log(err);
     } else {
       db.save(repoData, (err, result) => {
         if (err) {
@@ -24,16 +24,19 @@ app.post('/repos', urlencodedParser, function (req, res) {
       });
     }
   });
-
-  
-  // This route should take the github username provided
-  // and get the repo information from the github API, then
-  // save the repo information in the database
 });
 
 app.get('/repos', function (req, res) {
-  // TODO - your code here!
-  // This route should send back the top 25 repos
+  db.findTop25Repos((err, top25Repos) => {
+    top25Repos = JSON.stringify(top25Repos);
+    if (err) {
+      res.status(404);
+      res.send(err);
+    } else {
+      res.status(200);
+      res.send(top25Repos);
+    }
+  });
 });
 
 let port = 1128;
