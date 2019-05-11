@@ -24,7 +24,7 @@ let getReposByUsername = (username, callback) => {
       var shortenedRepos = [];
       for (let i = 0; i < parsedBody.length; i++) {
         let repo = parsedBody[i];
-        shortenedRepos.push({id: repo.id, username: repo.owner.login, forks: repo.forks, url: repo.owner.html_url, name: repo.name, updated_at: repo.updated_at, stars: repo.stargazers_count, description: repo.description, language: repo.language});
+        shortenedRepos.push({id: repo.id, username: repo.owner.login, forks: repo.forks, url: repo.owner.html_url, repo_name: repo.name, updated_at: repo.updated_at, stars: repo.stargazers_count, description: repo.description, language: repo.language});
       }
       callback(null, shortenedRepos);
     }
